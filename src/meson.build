@@ -77,6 +77,8 @@ hb_ot_sources = [
 
 hb_ot_headers = files([
   'hb-ot.h',
+  'hb-ot-deprecated.h',
+  'hb-ot-metrics.h',
   'hb-ot-color.h',
   'hb-ot-font.h',
   'hb-ot-layout.h',
