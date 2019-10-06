@@ -6,8 +6,10 @@ hb_base_sources = [
   'hb-face.cc',
   'hb-font.cc',
   'hb-map.cc',
+  'hb-number.cc',
   'hb-ot-cff1-table.cc',
   'hb-ot-cff2-table.cc',
+  'hb-ot-meta.cc',
   'hb-ot-name.cc',
   'hb-ot-tag.cc',
   'hb-set.cc',
@@ -16,7 +18,7 @@ hb_base_sources = [
   'hb-shaper.cc',
   'hb-static.cc',
   'hb-unicode.cc',
-  'hb-ucd.cc',  
+  'hb-ucd.cc',
   'hb-warning.cc',
 ]
 
@@ -29,6 +31,7 @@ hb_base_headers = files([
   'hb-face.h',
   'hb-font.h',
   'hb-map.h',
+  'hb-ot-meta.h',
   'hb-set.h',
   'hb-shape.h',
   'hb-shape-plan.h',
@@ -39,6 +42,7 @@ hb_base_headers = files([
 hb_base_ragel_sources = [
   'hb-buffer-deserialize-json.rl',
   'hb-buffer-deserialize-text.rl',
+  'hb-number-parser.rl',
 ]
 
 hb_fallback_sources = [
@@ -130,6 +134,7 @@ hb_icu_headers = files([
 hb_subset_sources = [
   'hb-ot-cff1-table.cc',
   'hb-ot-cff2-table.cc',
+  'hb-number.cc',
   'hb-static.cc',
   'hb-subset.cc',
   'hb-subset-cff1.cc',
@@ -191,6 +196,11 @@ endif
 if conf.get('HAVE_CORETEXT', 0) == 1
   hb_sources += ['hb-coretext.cc']
   hb_headers += ['hb-coretext.h']
+endif
+
+if conf.get('HAVE_GDI', 0) == 1
+  hb_sources += ['hb-gdi.cc']
+  hb_headers += ['hb-gdi.h']
 endif
 
 # harfbuzz
